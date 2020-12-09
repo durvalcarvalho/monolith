@@ -22,6 +22,7 @@ def create_user():
         if form.validate_on_submit():
             new_user = User()
             form.populate_obj(new_user)
+            new_user.set_password(new_user.password)
             db.session.add(new_user)
             db.session.commit()
             return redirect('/users')
